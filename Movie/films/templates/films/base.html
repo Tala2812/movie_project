@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #e0f7fa; }
+        h1 { color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="mt-3">
+            <a href="{% url 'index' %}" class="btn btn-secondary">Главная</a>
+            <a href="{% url 'add_movie' %}" class="btn btn-secondary">Добавить фильм</a>
+            <a href="{% url 'list_movies' %}" class="btn btn-secondary">Список фильмов</a>
+            <a href="{% url 'card_view' %}" class="btn btn-secondary">Карточки фильмов</a>
+        </nav>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script>
+        function toggleDetails(id) {
+            var element = document.getElementById(id);
+            var isCollapsed = element.classList.contains('collapse');
+            if (isCollapsed) {
+                element.classList.remove('collapse');
+            } else {
+                element.classList.add('collapse');
+            }
+        }
+    </script>
+</body>
+</html>

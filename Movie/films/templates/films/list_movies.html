@@ -1,0 +1,16 @@
+{% extends 'films/base.html' %}
+
+{% block title %}Список фильмов{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5">Список фильмов</h1>
+    <ul class="list-group mt-3">
+        {% for movie in movies %}
+        <li class="list-group-item">
+            <h5>{{ movie.title }}</h5>
+            <p>{{ movie.description }}</p>
+            <p><strong>Отзыв:</strong> {{ movie.review }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

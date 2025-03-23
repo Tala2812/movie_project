@@ -1,0 +1,37 @@
+{% extends 'films/base.html' %}
+
+{% block title %}Карточки фильмов{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5">Карточки фильмов</h1>
+    <div class="row mt-3">
+        {% for movie in movies %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <button class="btn btn-primary" type="button" onclick="toggleDetails('collapse{{ forloop.counter }}')">
+                        Подробнее
+                    </button>
+                    <div class="collapse mt-3" id="collapse{{ forloop.counter }}">
+                        <p class="card-text">{{ movie.description }}</p>
+                        <p class="card-text"><strong>Отзыв:</strong> {{ movie.review }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+<script>
+    function toggleDetails(id) {
+        var element = document.getElementById(id);
+        var isCollapsed = element.classList.contains('collapse');
+        if (isCollapsed) {
+            element.classList.remove('collapse');
+        } else {
+            element.classList.add('collapse');
+        }
+    }
+</script>
